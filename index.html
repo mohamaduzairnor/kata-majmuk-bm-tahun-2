@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kembara Kata Majmuk di Rimba - Tahun 2</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fredoka & Open Sans for kid-friendly reading -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #1a4314;
+            background-image: radial-gradient(#2d6a27 15%, transparent 16%), radial-gradient(#1e4d18 15%, transparent 16%);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            color: #2d3748;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .font-heading {
+            font-family: 'Fredoka', cursive;
+        }
+
+        .jungle-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            border: 4px solid #854d0e;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-jungle {
+            background: linear-gradient(180deg, #4ade80 0%, #16a34a 100%);
+            box-shadow: 0 6px 0 #14532d, 0 8px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.15s ease;
+        }
+
+        .btn-jungle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0 #14532d, 0 12px 18px rgba(0, 0, 0, 0.35);
+        }
+
+        .btn-jungle:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #14532d, 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-option {
+            background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+            border: 3px solid #cbd5e1;
+            box-shadow: 0 4px 0 #94a3b8;
+            transition: all 0.15s ease;
+        }
+
+        .btn-option:hover {
+            border-color: #3b82f6;
+            background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #3b82f6;
+        }
+
+        .btn-option.correct {
+            background: linear-gradient(180deg, #86efac 0%, #22c55e 100%) !important;
+            border-color: #15803d !important;
+            color: white !important;
+            box-shadow: 0 4px 0 #14532d !important;
+            animation: pulse 0.5s ease-in-out;
+        }
+
+        .btn-option.wrong {
+            background: linear-gradient(180deg, #fca5a5 0%, #ef4444 100%) !important;
+            border-color: #991b1b !important;
+            color: white !important;
+            box-shadow: 0 4px 0 #7f1d1d !important;
+            animation: shake 0.4s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .progress-bar-fill {
+            transition: width 0.5s ease-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-3 sm:p-6 relative overflow-x-hidden">
+
+    <!-- Decorative Jungle Leaves Background Overlay -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-20 flex justify-between">
+        <div class="text-7xl p-4">🌿</div>
+        <div class="text-7xl p-4">🍃</div>
+    </div>
+    <div class="fixed bottom-0 left-0 w-full h-full pointer-events-none z-0 opacity-20 flex justify-between items-end">
+        <div class="text-8xl p-4">🌴</div>
+        <div class="text-8xl p-4">🌳</div>
+    </div>
+
+    <!-- MAIN GAME CONTAINER -->
+    <main class="w-full max-w-4xl z-10 relative">
+
+        <!-- HEADER BANNER -->
+        <header class="text-center mb-4">
+            <div class="inline-block bg-gradient-to-r from-amber-600 via-yellow-500 to-amber-600 px-6 py-2 rounded-full border-4 border-amber-900 shadow-lg mb-1 transform -rotate-1">
+                <span class="text-xs sm:text-sm font-extrabold text-amber-950 uppercase tracking-wider block">Bahasa Melayu Tahun 2 (Muka Surat 68)</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-black text-yellow-300 font-heading drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] tracking-wide">
+                🌴 KEMBARA KATA MAJMUK 🐯
+            </h1>
+        </header>
+
+        <!-- SCREEN 1: WELCOME & STORY INTRO -->
+        <section id="screen-welcome" class="jungle-card rounded-3xl p-6 sm:p-8 text-center relative overflow-hidden">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 my-4">
+                <div class="w-36 h-36 sm:w-44 sm:h-44 bg-amber-100 rounded-full border-4 border-amber-500 flex items-center justify-center text-7xl sm:text-8xl shadow-inner floating flex-shrink-0">
+                    🐯
+                </div>
+                <div class="bg-amber-50 border-2 border-amber-300 rounded-2xl p-5 text-left relative max-w-lg shadow-sm">
+                    <div class="absolute -left-3 top-10 w-0 h-0 border-t-8 border-t-transparent border-r-12 border-r-amber-300 border-b-8 border-b-transparent hidden md:block"></div>
+                    <h2 class="text-xl font-bold text-amber-900 font-heading mb-2">Hai Kawan-kawan! Saya Si Belang! 👋</h2>
+                    <p class="text-base text-gray-7xl font-semibold leading-relaxed">
+                        Mari kita mengembara ke dalam **Rimba Kata Majmuk**! Kita akan belajar dan menjawab soalan kata majmuk berdasarkan kisah <span class="text-amber-800 font-bold">"Sehari dalam Kehidupan Elis"</span>.
+                    </p>
+                    <div class="mt-3 bg-amber-200/60 rounded-lg p-2 text-xs font-bold text-amber-900 flex items-center gap-2">
+                        <span>✨</span> <span>Tiada nyawa ditolak! Kamu boleh cuba sehingga berjaya!</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="startGame()" class="btn-jungle text-white text-xl font-black font-heading px-10 py-4 rounded-2xl uppercase tracking-wider flex items-center justify-center gap-3">
+                    🚀 Mula Pengembaraan!
+                </button>
+            </div>
+        </section>
+
+        <!-- SCREEN 2: LEVEL SELECTION / CHECKPOINT MAP -->
+        <section id="screen-map" class="jungle-card rounded-3xl p-6 sm:p-8 hidden">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-amber-900 font-heading">🗺️ Peta Checkpoint Rimba</h2>
+                <p class="text-gray-600 font-semibold text-sm sm:text-base">Pilih laluan checkpoint untuk memulakan cabaran!</p>
+            </div>
+
+            <!-- ROADMAP VISUAL -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative my-8">
+                
+                <!-- CHECKPOINT 1 -->
+                <div id="card-level-1" class="bg-gradient-to-b from-green-50 to-emerald-100 border-4 border-emerald-500 rounded-2xl p-5 text-center flex flex-col justify-between shadow-md relative">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Level 1</span>
+                    <div class="text-5xl my-3">🌅</div>
+                    <h3 class="text-lg font-bold text-emerald-950 font-heading">Pengembaraan Pagi</h3>
+                    <p class="text-xs text-gray-600 mt-1 mb-4 font-semibold">Bantu Elis bangun pagi & bersiap ke sekolah!</p>
+                    <div class="text-xs font-bold mb-3 text-emerald-800" id="badge-level-1">⭐ 0/5 Soalan</div>
+                    <button id="btn-start-l1" onclick="startLevel(0)" class="btn-jungle text-white text-sm font-bold py-2.5 px-4 rounded-xl">
+                        Mula Tahap 1 ▶
+                    </button>
+                </div>
+
+                <!-- CHECKPOINT 2 -->
+                <div id="card-level-2" class="bg-gradient-to-b from-amber-50 to-yellow-100 border-4 border-gray-300 rounded-2xl p-5 text-center flex flex-col justify-between shadow-md relative opacity-75">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Level 2</span>
+                    <div class="text-5xl my-3">🏡</div>
+                    <h3 class="text-lg font-bold text-amber-950 font-heading">Pengembaraan Petang</h3>
+                    <p class="text-xs text-gray-600 mt-1 mb-4 font-semibold">Aktiviti waktu petang & ruang tamu Elis!</p>
+                    <div class="text-xs font-bold mb-3 text-amber-800" id="badge-level-2">🔒 Dikunci</div>
+                    <button id="btn-start-l2" onclick="startLevel(1)" disabled class="bg-gray-400 text-white text-sm font-bold py-2.5 px-4 rounded-xl cursor-not-allowed shadow">
+                        🔒 Dikunci
+                    </button>
+                </div>
+
+                <!-- CHECKPOINT 3 -->
+                <div id="card-level-3" class="bg-gradient-to-b from-indigo-50 to-blue-100 border-4 border-gray-300 rounded-2xl p-5 text-center flex flex-col justify-between shadow-md relative opacity-75">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Level 3</span>
+                    <div class="text-5xl my-3">🌙</div>
+                    <h3 class="text-lg font-bold text-indigo-950 font-heading">Malam & Cabaran Rimba</h3>
+                    <p class="text-xs text-gray-600 mt-1 mb-4 font-semibold">Menyiapkan kerja sekolah & cabaran akhir!</p>
+                    <div class="text-xs font-bold mb-3 text-indigo-800" id="badge-level-3">🔒 Dikunci</div>
+                    <button id="btn-start-l3" onclick="startLevel(2)" disabled class="bg-gray-400 text-white text-sm font-bold py-2.5 px-4 rounded-xl cursor-not-allowed shadow">
+                        🔒 Dikunci
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- TOTAL SCORE BANNER -->
+            <div class="bg-amber-100 border-2 border-amber-400 rounded-xl p-4 flex justify-between items-center max-w-md mx-auto">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl">🏆</span>
+                    <div>
+                        <div class="text-xs font-bold text-amber-800 uppercase">Jumlah Markah Keseluruhan</div>
+                        <div id="map-total-score" class="text-xl font-black text-amber-950 font-heading">0 / 15 Soalan</div>
+                    </div>
+                </div>
+                <button onclick="showScreen('screen-welcome')" class="text-xs bg-amber-200 hover:bg-amber-300 font-bold px-3 py-2 rounded-lg text-amber-900 border border-amber-400">
+                    🏠 Utamain
+                </button>
+            </div>
+        </section>
+
+        <!-- SCREEN 3: QUIZ QUESTION DISPLAY -->
+        <section id="screen-quiz" class="jungle-card rounded-3xl p-5 sm:p-8 hidden">
+            <!-- QUIZ HEADER BAR -->
+            <div class="flex flex-wrap justify-between items-center gap-2 border-b-2 border-amber-200 pb-4 mb-4">
+                <div class="flex items-center gap-3">
+                    <span id="quiz-level-tag" class="bg-emerald-600 text-white text-base sm:text-xl font-black px-5 py-2 rounded-full uppercase">Tahap 1</span>
+                    <span id="quiz-progress-text" class="text-xl sm:text-2xl font-black text-amber-900 font-heading">Soalan 1/5</span>
+                </div>
+                
+                <!-- PROGRESS BAR -->
+                <div class="w-full sm:w-64 bg-gray-200 rounded-full h-5 border-2 border-amber-300 overflow-hidden">
+                    <div id="quiz-progress-bar" class="bg-emerald-500 h-full rounded-full progress-bar-fill" style="width: 20%;"></div>
+                </div>
+            </div>
+
+            <!-- STORY SCENARIO BOX -->
+            <div class="bg-amber-50/90 border-4 border-amber-300 rounded-2xl p-5 sm:p-6 mb-6 flex items-start gap-5 shadow-sm">
+                <div id="quiz-animal-avatar" class="text-6xl sm:text-7xl flex-shrink-0">🐯</div>
+                <div>
+                    <h4 id="quiz-scenario-title" class="text-sm sm:text-base font-black text-amber-800 uppercase tracking-widest">Cerita Elis</h4>
+                    <p id="quiz-scenario-text" class="text-xl sm:text-2xl text-amber-950 font-extrabold leading-relaxed mt-1">
+                        Jam loceng menunjukkan pukul 6:00 pagi. Elis bangun daripada tidur.
+                    </p>
+                </div>
+            </div>
+
+            <!-- QUESTION CARD -->
+            <div class="bg-white border-4 border-amber-400 rounded-2xl p-6 sm:p-8 mb-6 shadow-md">
+                <h3 id="quiz-question-text" class="text-2xl sm:text-3xl md:text-4xl font-black text-amber-950 font-heading mb-6 text-center leading-snug">
+                    Apakah kata majmuk yang sesuai untuk gambar ini?
+                </h3>
+
+                <!-- MULTIPLE CHOICE BUTTONS -->
+                <div id="quiz-options-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <!-- Dynamic Buttons Generated Here -->
+                </div>
+            </div>
+
+            <!-- FEEDBACK & EXPLANATION BOX -->
+            <div id="quiz-feedback-box" class="hidden rounded-2xl p-6 mb-4 border-3 text-center transition-all">
+                <div id="quiz-feedback-title" class="text-2xl sm:text-3xl font-black font-heading mb-2"></div>
+                <div id="quiz-feedback-text" class="text-xl sm:text-2xl font-bold"></div>
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="flex justify-between items-center mt-6">
+                <button onclick="showScreen('screen-map')" class="text-gray-800 hover:text-amber-950 font-black text-base sm:text-lg flex items-center gap-2 bg-amber-100 hover:bg-amber-200 px-5 py-3 rounded-xl border-2 border-amber-300">
+                    ⬅️ Peta Checkpoint
+                </button>
+                <button id="btn-next-question" onclick="nextQuestion()" class="btn-jungle text-white text-xl sm:text-2xl font-black py-4 px-10 rounded-2xl hidden flex items-center gap-2">
+                    Soalan Seterusnya ▶
+                </button>
+            </div>
+        </section>
+
+        <!-- SCREEN 4: CERTIFICATE & FINAL RESULTS -->
+        <section id="screen-result" class="jungle-card rounded-3xl p-6 sm:p-10 text-center hidden">
+            <div class="text-6xl mb-2 floating">🏆</div>
+            <h2 class="text-3xl sm:text-4xl font-black text-amber-950 font-heading mb-1">Tahniah! Juara Rimba!</h2>
+            <p class="text-gray-600 font-semibold text-sm sm:text-base">Kamu telah berjaya menyelesaikan Kembara Kata Majmuk!</p>
+
+            <!-- STAR RATING -->
+            <div id="result-stars" class="flex justify-center gap-2 text-5xl my-4">
+                ⭐ ⭐ ⭐
+            </div>
+
+            <!-- SCORE BOARD -->
+            <div class="bg-gradient-to-r from-amber-50 via-yellow-100 to-amber-50 border-4 border-amber-400 rounded-2xl p-6 my-6 max-w-md mx-auto shadow-inner">
+                <div class="text-xs font-bold text-amber-800 uppercase tracking-widest mb-1">Keputusan Akhir</div>
+                <div id="final-score-text" class="text-4xl font-black text-amber-950 font-heading my-2">15 / 15</div>
+                <div id="final-message" class="text-sm font-bold text-emerald-800 bg-emerald-100 rounded-lg py-2 px-3 inline-block mt-2">
+                    Cemerlang! Kamu Sangat Bijak! 🎉
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+                <button onclick="restartGame()" class="btn-jungle text-white text-lg font-bold py-3.5 px-8 rounded-2xl flex items-center justify-center gap-2">
+                    🔄 Main Semula
+                </button>
+                <button onclick="showScreen('screen-map')" class="bg-amber-200 hover:bg-amber-300 text-amber-950 font-bold py-3.5 px-8 rounded-2xl border-2 border-amber-400 shadow flex items-center justify-center gap-2">
+                    🗺️ Lihat Peta
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // WEB AUDIO API FOR SOUND EFFECTS
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playSound(type) {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            if (type === 'correct') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+                osc.frequency.exponentialRampToValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+                osc.frequency.exponentialRampToValueAtTime(783.99, audioCtx.currentTime + 0.2); // G5
+                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.35);
+            } else if (type === 'wrong') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(220, audioCtx.currentTime); // A3
+                osc.frequency.setValueAtTime(174.61, audioCtx.currentTime + 0.15); // F3
+                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.3);
+            } else if (type === 'click') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.08);
+            } else if (type === 'win') {
+                // Fanfare melody
+                const notes = [523.25, 659.25, 783.99, 1046.50];
+                notes.forEach((freq, idx) => {
+                    const o = audioCtx.createOscillator();
+                    const g = audioCtx.createGain();
+                    o.connect(g);
+                    g.connect(audioCtx.destination);
+                    o.frequency.value = freq;
+                    g.gain.setValueAtTime(0.15, audioCtx.currentTime + idx * 0.12);
+                    g.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + idx * 0.12 + 0.25);
+                    o.start(audioCtx.currentTime + idx * 0.12);
+                    o.stop(audioCtx.currentTime + idx * 0.12 + 0.25);
+                });
+            }
+        }
+
+        // GAME DATA: 3 LEVELS, 15 QUESTIONS TOTAL
+        const gameData = [
+            // LEVEL 1: PENGEMBARAAN PAGI (Morning Adventure)
+            {
+                levelName: "Tahap 1: Pengembaraan Pagi 🌅",
+                questions: [
+                    {
+                        avatar: "⏰",
+                        scenarioTitle: "Pagi - Pukul 6:00 Pagi",
+                        scenarioText: "Benda ini berbunyi 'Kring! Kring!' untuk mengejutkan Elis daripada tidur setiap pagi.",
+                        question: "Apakah nama alatan ini?",
+                        options: ["jam loceng", "jam dinding", "peti ais", "rumah kayu"],
+                        answer: 0,
+                        explanation: "<b>Jam loceng</b> ialah kata majmuk yang merujuk kepada jam yang mengejutkan kita bangun tidur."
+                    },
+                    {
+                        avatar: "👨‍👩‍👧",
+                        scenarioTitle: "Pagi - Bersiap ke Sekolah",
+                        scenarioText: "Elis mencium tangan ___ sebelum pergi ke sekolah dengan penuh hormat.",
+                        question: "Lengkapkan ayat dengan Kata Majmuk yang betul:",
+                        options: ["guru besar", "ibu bapa", "jiran tetangga", "kakak abang"],
+                        answer: 1,
+                        explanation: "<b>Ibu bapa</b> bermaksud emak dan ayah Elis."
+                    },
+                    {
+                        avatar: "👔",
+                        scenarioTitle: "Pagi - Kekemasan Diri",
+                        scenarioText: "Elis memakai ___ sekolah yang bersih dan kemas untuk belajar.",
+                        question: "Apakah kata majmuk bagi pakaian rasmi murid?",
+                        options: ["baju hujan", "baju tidur", "baju seragam", "kasut sukan"],
+                        answer: 2,
+                        explanation: "<b>Baju seragam</b> ialah pakaian khas yang dipakai oleh murid sekolah."
+                    },
+                    {
+                        avatar: "🏫",
+                        scenarioTitle: "Pagi - Tiba di Sekolah",
+                        scenarioText: "Sampai di sekolah, Elis terus masuk ke dalam ___ untuk bersiap sedia belajar.",
+                        question: "Apakah tempat murid belajar di sekolah?",
+                        options: ["bilik darjah", "bilik air", "taman bunga", "ruang tamu"],
+                        answer: 0,
+                        explanation: "<b>Bilik darjah</b> ialah tempat murid belajar bersama guru."
+                    },
+                    {
+                        avatar: "📅",
+                        scenarioTitle: "Pagi - Disiplin Diri",
+                        scenarioText: "Elis murid yang berdisiplin kerana dia mengikut ___ harian yang ditetapkan.",
+                        question: "Pilih kata majmuk yang sesuai:",
+                        options: ["buku tulis", "jadual harian", "pensel warna", "papan hitam"],
+                        answer: 1,
+                        explanation: "<b>Jadual harian</b> ialah penyusunan aktiviti yang dilakukan setiap hari."
+                    }
+                ]
+            },
+
+            // LEVEL 2: PENGEMBARAAN PETANG (Afternoon Adventure)
+            {
+                levelName: "Tahap 2: Pengembaraan Petang 🏡",
+                questions: [
+                    {
+                        avatar: "🛋️",
+                        scenarioTitle: "Petang - Waktu Rehat",
+                        scenarioText: "Pada waktu petang, Elis berehat bersama ibunya di ___ sambil berbual-bual.",
+                        question: "Di manakah tempat berehat di dalam rumah?",
+                        options: ["dapur rumah", "ruang tamu", "bilik mandi", "taman permainan"],
+                        answer: 1,
+                        explanation: "<b>Ruang tamu</b> ialah kawasan hadapan rumah untuk berehat atau menerima tetamu."
+                    },
+                    {
+                        avatar: "📖",
+                        scenarioTitle: "Petang - Membaca Buku",
+                        scenarioText: "Elis suka membaca ___ yang mempunyai banyak gambar yang menarik.",
+                        question: "Apakah bahan bacaan yang dibaca oleh Elis?",
+                        options: ["buku cerita", "surat khabar", "kad ucapan", "kertas lukisan"],
+                        answer: 0,
+                        explanation: "<b>Buku cerita</b> ialah buku yang mengandungi kisahan menarik untuk dibaca."
+                    },
+                    {
+                        avatar: "🪑",
+                        scenarioTitle: "Petang - Santai Bersama Ibu",
+                        scenarioText: "Ibu Elis duduk di atas ___ sambil menjahit baju di ruang tamu.",
+                        question: "Pilih kata majmuk yang bermaksud kerusi untuk berehat:",
+                        options: ["kerusi kayu", "kerusi malas", "meja makan", "papan lapis"],
+                        answer: 1,
+                        explanation: "<b>Kerusi malas</b> ialah kerusi selesa yang digunakan untuk berehat."
+                    },
+                    {
+                        avatar: "👓",
+                        scenarioTitle: "Petang - Mengait Baju",
+                        scenarioText: "Ibu Elis memakai ___ kerana mahu melihat benang jahitannya dengan lebih jelas.",
+                        question: "Apakah alatan yang dipakai pada mata?",
+                        options: ["cermin mata", "sarung tangan", "kasut kulit", "jam tangan"],
+                        answer: 0,
+                        explanation: "<b>Cermin mata</b> membantu seseorang melihat dengan lebih jelas."
+                    },
+                    {
+                        avatar: "🌺",
+                        scenarioTitle: "Petang - Aktiviti Luar",
+                        scenarioText: "Di luar rumah Elis terdapat ___ yang ditanami pokok bunga yang harum.",
+                        question: "Apakah tempat yang indah dipenuhi bunga-bungaan?",
+                        options: ["taman bunga", "kolam ikan", "padang bola", "jalan raya"],
+                        answer: 0,
+                        explanation: "<b>Taman bunga</b> ialah kawasan yang ditanam pelbagai jenis bunga."
+                    }
+                ]
+            },
+
+            // LEVEL 3: MALAM & CABARAN RIMBA (Night & Jungle Challenge)
+            {
+                levelName: "Tahap 3: Malam & Cabaran Rimba 🌙",
+                questions: [
+                    {
+                        avatar: "📝",
+                        scenarioTitle: "Malam - Belajar di Rumah",
+                        scenarioText: "Elis menyiapkan ___ yang diberikan oleh gurunya sebelum masuk tidur.",
+                        question: "Apakah tugas pelajaran yang dibuat di rumah?",
+                        options: ["kerja sekolah", "kerja rumah", "bacaan pagi", "tugas harian"],
+                        answer: 0,
+                        explanation: "<b>Kerja sekolah</b> ialah tugasan akademik yang perlu disiapkan oleh murid."
+                    },
+                    {
+                        avatar: "💡",
+                        scenarioTitle: "Malam - Suasana Belajar",
+                        scenarioText: "Elis menyalakan ___ di atas meja supaya kawasan belajarnya terang.",
+                        question: "Apakah nama alat pencahayaan di meja belajar?",
+                        options: ["lampu meja", "lampu jalan", "kipas angin", "peti sejuk"],
+                        answer: 0,
+                        explanation: "<b>Lampu meja</b> ialah lampu khas yang diletakkan di meja belajar."
+                    },
+                    {
+                        avatar: "✏️",
+                        scenarioTitle: "Malam - Mewarna Gambar",
+                        scenarioText: "Elis menggunakan ___ untuk mewarnakan lukisan sekolahnya.",
+                        question: "Apakah alat mewarna ini?",
+                        options: ["pensel warna", "papan hitam", "buku nota", "beg sekolah"],
+                        answer: 0,
+                        explanation: "<b>Pensel warna</b> digunakan untuk memberi warna pada lukisan."
+                    },
+                    {
+                        avatar: "🗓️",
+                        scenarioTitle: "Malam - Mempersiapkan Beg",
+                        scenarioText: "Elis menyusun buku sekolah mengikut ___ bagi hari esok.",
+                        question: "Apakah jadual pelajaran mengikut subjek?",
+                        options: ["jadual waktu", "jadual harian", "buku latihan", "surat khabar"],
+                        answer: 0,
+                        explanation: "<b>Jadual waktu</b> menunjukkan waktu dan mata pelajaran di sekolah."
+                    },
+                    {
+                        avatar: "⌚",
+                        scenarioTitle: "Cabaran Rimba - Penutup",
+                        scenarioText: "Elis memakai ___ di pergelangan tangannya agar sentiasa menepati waktu.",
+                        question: "Apakah kata majmuk yang tepat?",
+                        options: ["jam tangan", "jam loceng", "cermin mata", "tangan baju"],
+                        answer: 0,
+                        explanation: "<b>Jam tangan</b> ialah jam kecil yang dipakai pada pergelangan tangan."
+                    }
+                ]
+            }
+        ];
+
+        // GAME STATE VARIABLE
+        let currentLevelIdx = 0;
+        let currentQuestionIdx = 0;
+        let scorePerLevel = [0, 0, 0];
+        let answeredQuestions = [0, 0, 0];
+        let isAnswered = false;
+
+        // SCREEN NAVIGATION FUNCTION
+        function showScreen(screenId) {
+            playSound('click');
+            document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
+            document.getElementById(screenId).classList.remove('hidden');
+
+            if (screenId === 'screen-map') {
+                updateMapUI();
+            }
+        }
+
+        // START GAME FROM WELCOME SCREEN
+        function startGame() {
+            showScreen('screen-map');
+        }
+
+        // UPDATE MAP CHECKPOINT STATE & BADGES
+        function updateMapUI() {
+            let totalOverallScore = scorePerLevel.reduce((a, b) => a + b, 0);
+            document.getElementById('map-total-score').innerText = `${totalOverallScore} / 15 Soalan`;
+
+            // LEVEL 1
+            document.getElementById('badge-level-1').innerText = `⭐ ${scorePerLevel[0]}/5 Soalan`;
+
+            // LEVEL 2 UNLOCK CONDITION (After Level 1 answered at least 3 correctly or completed)
+            const cardL2 = document.getElementById('card-level-2');
+            const btnL2 = document.getElementById('btn-start-l2');
+            if (answeredQuestions[0] >= 5) {
+                cardL2.classList.remove('opacity-75');
+                cardL2.classList.replace('border-gray-300', 'border-amber-500');
+                btnL2.disabled = false;
+                btnL2.className = "btn-jungle text-white text-sm font-bold py-2.5 px-4 rounded-xl cursor-pointer";
+                btnL2.innerHTML = "Mula Tahap 2 ▶";
+                document.getElementById('badge-level-2').innerText = `⭐ ${scorePerLevel[1]}/5 Soalan`;
+            }
+
+            // LEVEL 3 UNLOCK CONDITION (After Level 2 completed)
+            const cardL3 = document.getElementById('card-level-3');
+            const btnL3 = document.getElementById('btn-start-l3');
+            if (answeredQuestions[1] >= 5) {
+                cardL3.classList.remove('opacity-75');
+                cardL3.classList.replace('border-gray-300', 'border-indigo-500');
+                btnL3.disabled = false;
+                btnL3.className = "btn-jungle text-white text-sm font-bold py-2.5 px-4 rounded-xl cursor-pointer";
+                btnL3.innerHTML = "Mula Tahap 3 ▶";
+                document.getElementById('badge-level-3').innerText = `⭐ ${scorePerLevel[2]}/5 Soalan`;
+            }
+        }
+
+        // START A SPECIFIC LEVEL
+        function startLevel(levelIdx) {
+            currentLevelIdx = levelIdx;
+            currentQuestionIdx = 0;
+            showScreen('screen-quiz');
+            loadQuestion();
+        }
+
+        // LOAD CURRENT QUESTION TO UI
+        function loadQuestion() {
+            isAnswered = false;
+            const levelData = gameData[currentLevelIdx];
+            const qData = levelData.questions[currentQuestionIdx];
+
+            // UPDATE HEADER
+            document.getElementById('quiz-level-tag').innerText = `Tahap ${currentLevelIdx + 1}`;
+            document.getElementById('quiz-progress-text').innerText = `Soalan ${currentQuestionIdx + 1} / 5`;
+            
+            const progressPercent = ((currentQuestionIdx + 1) / 5) * 100;
+            document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+
+            // SCENARIO & QUESTION
+            document.getElementById('quiz-animal-avatar').innerText = qData.avatar;
+            document.getElementById('quiz-scenario-title').innerText = qData.scenarioTitle;
+            document.getElementById('quiz-scenario-text').innerText = qData.scenarioText;
+            document.getElementById('quiz-question-text').innerText = qData.question;
+
+            // HIDE FEEDBACK & NEXT BUTTON
+            const feedbackBox = document.getElementById('quiz-feedback-box');
+            feedbackBox.className = "hidden rounded-2xl p-6 mb-4 border-3 text-center transition-all";
+            document.getElementById('btn-next-question').classList.add('hidden');
+
+            // GENERATE OPTIONS WITH EXTRA LARGE TEXT AND GIANT BADGES
+            const grid = document.getElementById('quiz-options-grid');
+            grid.innerHTML = '';
+
+            qData.options.forEach((optText, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'btn-option w-full py-5 px-6 rounded-2xl font-black text-amber-950 text-xl sm:text-2xl text-left flex items-center justify-between shadow-md cursor-pointer';
+                const badgeChar = String.fromCharCode(65 + idx);
+                btn.innerHTML = `<div class="flex items-center gap-4"><span class="bg-amber-200 text-amber-950 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center font-black text-xl sm:text-2xl border-3 border-amber-400 flex-shrink-0">${badgeChar}</span> <span>${optText}</span></div> <span class="text-3xl opacity-40">✨</span>`;
+                btn.onclick = () => selectAnswer(idx, btn);
+                grid.appendChild(btn);
+            });
+        }
+
+        // CHECK SELECTED ANSWER
+        function selectAnswer(selectedIdx, btnElement) {
+            if (isAnswered) return;
+            isAnswered = true;
+
+            const qData = gameData[currentLevelIdx].questions[currentQuestionIdx];
+            const feedbackBox = document.getElementById('quiz-feedback-box');
+            const feedbackTitle = document.getElementById('quiz-feedback-title');
+            const feedbackText = document.getElementById('quiz-feedback-text');
+            const allOptionBtns = document.querySelectorAll('.btn-option');
+
+            if (selectedIdx === qData.answer) {
+                // CORRECT ANSWER
+                playSound('correct');
+                btnElement.classList.add('correct');
+                scorePerLevel[currentLevelIdx]++;
+
+                feedbackBox.className = "rounded-2xl p-4 mb-4 border-2 text-center bg-emerald-100 border-emerald-400 text-emerald-900 block animate-bounce-short";
+                feedbackTitle.innerHTML = "🎉 SYABAS! JAWAPAN BETUL!";
+                feedbackText.innerHTML = qData.explanation;
+            } else {
+                // WRONG ANSWER (No Lives Lost, Friendly Encouragement)
+                playSound('wrong');
+                btnElement.classList.add('wrong');
+                
+                // Highlight the correct answer button
+                allOptionBtns[qData.answer].classList.add('correct');
+
+                feedbackBox.className = "rounded-2xl p-4 mb-4 border-2 text-center bg-amber-100 border-amber-400 text-amber-900 block";
+                feedbackTitle.innerHTML = "💪 CUBA LAGI! JAWAPAN TEPAT IALAH:";
+                feedbackText.innerHTML = qData.explanation;
+            }
+
+            // MARK QUESTION ANSWERED IN TRACKER
+            answeredQuestions[currentLevelIdx] = Math.max(answeredQuestions[currentLevelIdx], currentQuestionIdx + 1);
+
+            // SHOW NEXT BUTTON
+            document.getElementById('btn-next-question').classList.remove('hidden');
+        }
+
+        // ADVANCE TO NEXT QUESTION OR FINISH LEVEL
+        function nextQuestion() {
+            playSound('click');
+            currentQuestionIdx++;
+
+            if (currentQuestionIdx < 5) {
+                loadQuestion();
+            } else {
+                // LEVEL COMPLETED
+                if (currentLevelIdx < 2) {
+                    showScreen('screen-map');
+                } else {
+                    showFinalResults();
+                }
+            }
+        }
+
+        // DISPLAY CERTIFICATE / FINAL RESULT SCREEN
+        function showFinalResults() {
+            playSound('win');
+            showScreen('screen-result');
+
+            const totalScore = scorePerLevel.reduce((a, b) => a + b, 0);
+            document.getElementById('final-score-text').innerText = `${totalScore} / 15 Soalan`;
+
+            const starsDiv = document.getElementById('result-stars');
+            const msgDiv = document.getElementById('final-message');
+
+            if (totalScore >= 13) {
+                starsDiv.innerText = "⭐ ⭐ ⭐";
+                msgDiv.className = "text-sm font-bold text-emerald-800 bg-emerald-100 rounded-lg py-2 px-4 inline-block mt-2";
+                msgDiv.innerText = "🌟 HEBAT & CEMERLANG! Kamu Pakar Kata Majmuk! 🎉";
+            } else if (totalScore >= 8) {
+                starsDiv.innerText = "⭐ ⭐ ⚪";
+                msgDiv.className = "text-sm font-bold text-amber-800 bg-amber-100 rounded-lg py-2 px-4 inline-block mt-2";
+                msgDiv.innerText = "👍 BAGUS SANGAT! Teruskan Usaha Kawan! 👏";
+            } else {
+                starsDiv.innerText = "⭐ ⚪ ⚪";
+                msgDiv.className = "text-sm font-bold text-blue-800 bg-blue-100 rounded-lg py-2 px-4 inline-block mt-2";
+                msgDiv.innerText = "😊 BIJAK! Boleh cuba lagi untuk dapatkan 3 bintang! 💪";
+            }
+        }
+
+        // RESTART GAME
+        function restartGame() {
+            scorePerLevel = [0, 0, 0];
+            answeredQuestions = [0, 0, 0];
+            currentLevelIdx = 0;
+            currentQuestionIdx = 0;
+            showScreen('screen-welcome');
+        }
+    </script>
+</body>
+</html>
